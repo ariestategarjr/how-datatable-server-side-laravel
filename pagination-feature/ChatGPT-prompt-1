@@ -1,0 +1,3 @@
+Melanjutkan, saya ingin menambahkan fitur paginasi pada DataTables. Hal ini dikarenakan pada "show entries" milik DataTables masih menampilkan 15 data sedangkan saya memilih 10 data saja untuk ditampilkan. 
+
+Buatkan kode lanjutan dari kode sebelumnya untuk menambahkan paginasi dimana ketika saya memiliki 15 data dan memilih 10 data saja yang ditampilkan maka hasilnya adalah pada halaman 1 menampilkan 10 data dan pada halaman 2 menampilkan 5 data berikutnya.
