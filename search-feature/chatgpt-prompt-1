@@ -1,0 +1,78 @@
+product.blade.php terdapat kode berikut ini:
+    <script>
+        $(document).ready(function() {
+            $("#user_table").DataTable({
+                "processing": true,
+                "serverSide": true,
+                "order": [],
+                "ajax": {
+                    "url": "{{ route('sale.showProductsModalData') }}",
+                    "type": "POST",
+                    "data": {
+                        _token: "{{ csrf_token() }}",
+                    },
+                    "dataSrc": "data" // Menggunakan data sebagai sumber data utama
+                },
+                "columns": [{
+                        "data": "id"
+                    }, // Menampilkan nomor urutan biasa
+                    {
+                        "data": "barcode"
+                    },
+                    {
+                        "data": "name"
+                    },
+                    {
+                        "data": "category_name"
+                    }, // Menampilkan nama kategori
+                    {
+                        "data": "stock"
+                    },
+                    {
+                        "data": "selling_price"
+                    },
+                    {
+                        "data": null,
+                        "render": function(data, type, full, meta) {
+                            // Tambahkan tombol aksi di sini
+                            return "<input type='number'>";
+                        }
+                    },
+                    {
+                        "data": null,
+                        "render": function(data, type, full, meta) {
+                            // Tambahkan tombol aksi di sini
+                            return "<button class='btn btn-sm btn-primary'>Action</button>";
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
+
+SaleController.php terdapat kode berikut ini:
+    public function showProductsModalData()
+    {
+        $products = ProductDatatable::getProducts()
+            ->leftJoin('categories', 'products.category_id', '=', 'categories.id')
+            ->leftJoin('units', 'products.unit_id', '=', 'units.id')
+            ->select('products.*', 'categories.name as category_name', 'units.name as unit_name')
+            ->get();
+
+        return response()->json(['data' => $products]);
+    }
+
+ProductDatatable.php terdapat kode berikut ini:
+class ProductDatatable extends Model
+{
+    use HasFactory;
+
+    protected $table = 'products';
+
+    public static function getProducts()
+    {
+        return DB::table('products')->select('*');
+    }
+}
+
+Saya memiliki modal yang menampilkan data-data dari tabel "products" menggunakan kode-kode diatas. Saya ingin menambahkan fitur pencarian dari DataTable terhadap data-data produk berdasarkan "product_name" dan "product_category". Buatkan saya kode tambahan berdasarkan kode-kode diatas untuk fitur pencarian DataTable.
