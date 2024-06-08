@@ -1,0 +1,9 @@
+<input type="text" id="search_input" placeholder="Search Products">
+
+Saya tidak ingin menambahkan elemen berikut untuk melakukan pencarian. Saya ingin menggunakan elemen berikut :
+
+input type="search" class="form-control form-control-sm" placeholder="" aria-controls="user_table">
+
+Dimana elemen berikut merupakan bawaan dari DataTable. Saya tidak tahu bagaimana mengambil value dari elemen tersebut.
+
+Buatkan saya perubahan kode dari kode sebelumnya dimana saya dapat menggunakan elemen pencarian dari DataTable tanpa harus membuat elemen pencarian yang baru.
