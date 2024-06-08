@@ -1,5 +1,7 @@
-... 
-   public function showProductsModalData()
+class SaleController extends Controller
+{
+...
+    public function showProductsModalData()
     {
         $products = ProductDatatable::getProducts()
             ->leftJoin('categories', 'products.category_id', '=', 'categories.id')
@@ -10,3 +12,5 @@
         return response()->json(['data' => $products]);
     }
 ...
+    }
+}
